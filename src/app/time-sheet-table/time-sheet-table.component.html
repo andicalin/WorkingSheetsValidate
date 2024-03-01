@@ -1,0 +1,31 @@
+<div class="container" *ngIf="timeSheetData.length > 0">
+  <div class="row">
+    <h2 class="result">Result</h2>
+  </div>
+  <div class="row">
+    <!-- time-sheet-table.component.html -->
+    <table class="table table-hover table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>Date</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+        </tr>
+      </thead>
+      <tbody class="thead-light">
+        <tr *ngFor="let entry of timeSheetData">
+          <td>{{ entry.description }}</td>
+          <td>{{ entry.startDateTime }}</td>
+          <td>{{ entry.endDateTime }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <button class="btn btn-primary" (click)="processTimeSheetData()">
+      Process Data
+    </button>
+  </div>
+
+  <!-- Process Button -->
+</div>
