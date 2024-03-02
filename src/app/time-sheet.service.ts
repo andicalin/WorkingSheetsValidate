@@ -80,7 +80,7 @@ export class TimeSheetService {
           endDate: `${entry.endDateTime.getHours()}:${entry.endDateTime.getMinutes()}`,
           hoursWorked: '0',
           numEntries: 0,
-          flags: []
+          flags: '',
         };
       }
       const durationMilliseconds = entry.endDateTime.getTime() - entry.startDateTime.getTime();
@@ -101,8 +101,12 @@ export class TimeSheetService {
       summaryMap[dateKey].hoursWorked = duration;
       summaryMap[dateKey].numEntries++;
 
-      // Example flag logic (customize as needed)
-      if (duration > '8h') summaryMap[dateKey].flags.push('Overtime'); // Adding flag as string to array
+      const durationMinutesForFlag = (entry.endDateTime.getTime() - entry.startDateTime.getTime()) / (1000 * 60);
+
+  // Check if duration is greater than 8 hours (480 minutes)
+  if (durationMinutesForFlag > 480) {
+    summaryMap[dateKey].flags = 'Overtime';
+  }
     });
 
     return Object.values(summaryMap); // Directly returning the array of Summary objects

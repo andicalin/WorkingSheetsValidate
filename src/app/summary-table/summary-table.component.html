@@ -11,10 +11,10 @@
           <th>Start Date</th>
           <th>End Date</th>
           <th>Hours Worked</th>
-          <th>Overlapping</th>
-          <th>Overlapping Details:</th>
-          <th>Entry Count</th>
           <th>Flags</th>
+          <th>Overlapping</th>
+          <th>Overlapping Details</th>
+          <th>Entry Count</th>
           <!-- Column for expand/collapse buttons -->
         </tr>
       </thead>
@@ -27,15 +27,10 @@
             <td>{{ day.startDate }}</td>
             <td>{{ day.endDate }}</td>
             <td>{{ day.hoursWorked }}</td>
+            <td>{{ day.flags }}</td>
             <td>{{ day.overlapping }}</td>
             <td>{{ day.overlappingDetails }}</td>
             <td>{{ day.numEntries }}</td>
-            <td>{{ day.flags }}</td>
-            <td>
-              <span *ngFor="let flag of day.flags; let last = last"
-                >{{ flag }}{{ last ? "" : ", " }}</span
-              >
-            </td>
 
           </tr>
           <!-- Removed expandable detail row related to 'day.details' -->
